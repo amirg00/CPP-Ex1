@@ -260,6 +260,14 @@ string largeMat4 = "%\n"
                    "%\n"
                    "%";
 
+string invalidMat = "@@@@@@@@@\n"
+             "@-------@\n"
+             "@-@@@@@-@\n"
+             "@-@-- -@-@\n"
+             "@-@@@@@-@\n"
+             "@-------@\n"
+             "@@@@@@@@@";
+
 
 /**
  * Returns the input string without the whitespace characters: space, newline and tab.
@@ -313,6 +321,12 @@ TEST_CASE("GOOD input - long mats") {
 
     string rslt4 = mat(1, 73, '%', '^');
     CHECK((nospaces(rslt4) == nospaces(largeMat4) && rslt4.find(largeMat4) != string::npos));
+}
+
+TEST_CASE("Bad input - spaces within string"){
+    string rslt  = mat(9, 7, '@', '-');
+    CHECK(nospaces(rslt)  == nospaces(invalidMat));
+    CHECK_FALSE((nospaces(rslt)  == nospaces(invalidMat) && rslt.find(invalidMat) != string::npos));
 }
 
 /**
