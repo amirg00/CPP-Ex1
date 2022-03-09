@@ -62,9 +62,6 @@ TEST_CASE("Good input") {
                                                     "$*$\n"
                                                     "$$$"));
 
-
-
-    /* Add more test here */
 }
 /**
  * Here we will have a test checks valid long mats.
@@ -296,9 +293,28 @@ TEST_CASE("Bad input - even") {
 }
 
 /**
-* This test checks if for space type inputted Row and Col, the function raise an error, as should be.
+ * This test checks if for negative inputted Row and Col, the function raise an error, as should be.
+ */
+TEST_CASE("Bad input - negative numbers") {
+    CHECK_THROWS(mat(-1, 5, '$', '%'));
+    CHECK_THROWS(mat(97, -4, '#', '-'));
+    CHECK_THROWS(mat(-6, -8, '%', '.'));
+    CHECK_THROWS(mat(-6, -8, '-', '-'));
+}
+
+/**
+ * This test checks for cases that seem to be invalid, but they actually aren't.
+ * Therefore, we will check if the function won't throw an error for those inputs.
+ */
+TEST_CASE("Valid input - same char") {
+    CHECK_NOTHROW(mat(1, 5, '%', '%'));
+}
+
+/**
+* This test checks if for space type inputted Row and Col, the function doesn't raise an error,
+* as should be from the TestExample.cpp file.
 */
-TEST_CASE("Bad input - invalid chars") {
+TEST_CASE("Valid input - space chars") {
     CHECK_NOTHROW(mat(11, 1, ' ', '%'));
     CHECK_NOTHROW(mat(9, 7, '\r', '-'));
     CHECK_NOTHROW(mat(13, 5, '\n', '.'));
@@ -310,23 +326,3 @@ TEST_CASE("Bad input - invalid chars") {
     CHECK_NOTHROW(mat(13, 5, '~', '\n'));
     CHECK_NOTHROW(mat(15, 15, '!', '\t'));
 }
-
-/**
- * This test checks if for negative inputted Row and Col, the function raise an error, as should be.
- */
-TEST_CASE("Bad input - negative numbers") {
-    CHECK_THROWS(mat(-1, 5, '$', '%'));
-    CHECK_THROWS(mat(97, -4, '#', '-'));
-    CHECK_THROWS(mat(-6, -8, '%', '.'));
-    CHECK_THROWS(mat(-6, -8, '-', '-'));
-}
-
-/**
- * This test checks for cases that seem to be not valid, but they actually are.
- * Therefore, we will check if the function won't throw an error for those inputs.
- */
-TEST_CASE("Valid input") {
-    CHECK_NOTHROW(mat(1, 5, '%', '%'));
-}
-
-/* Add more test cases here */
