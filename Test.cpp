@@ -279,30 +279,40 @@ string nospaces(string input) {
 //=======================================/
 
 TEST_CASE("Good input") {
-    CHECK(nospaces(mat(9, 7, '@', '-'))  == nospaces(Mat));
+    string rslt  = mat(9, 7, '@', '-');
+    CHECK((nospaces(rslt)  == nospaces(Mat)  && rslt.find(Mat) != string::npos));
 
-    CHECK(nospaces(mat(1, 13, '@', '-')) == nospaces(Mat2));
+    string rslt2 = mat(1, 13, '@', '-');
+    CHECK((nospaces(rslt2) == nospaces(Mat2) && rslt2.find(Mat2) != string::npos));
 
-    CHECK(nospaces(mat(13, 1, '@', '-')) == nospaces(Mat3));
+    string rslt3 = mat(13, 1, '@', '-');
+    CHECK((nospaces(rslt3) == nospaces(Mat3) && rslt3.find(Mat3) != string::npos));
 
-    CHECK(nospaces(mat(5, 3, '^', '^'))  == nospaces(Mat4));
+    string rslt4 = mat(5, 3, '^', '^');
+    CHECK((nospaces(rslt4) == nospaces(Mat4) && rslt4.find(Mat4) != string::npos));
 
     // Smallest inputs:
-    CHECK(nospaces(mat(1, 1, '@', '-'))  == nospaces(Mat5));
+    string rslt5 = mat(1, 1, '@', '-');
+    CHECK((nospaces(rslt5) == nospaces(Mat5) && rslt5.find(Mat5) != string::npos));
 
-    CHECK(nospaces(mat(3, 3, '$', '*'))  == nospaces(Mat6));
+    string rslt6 = mat(3, 3, '$', '*');
+    CHECK((nospaces(rslt6) == nospaces(Mat6) && rslt6.find(Mat6) != string::npos));
 }
 /**
  * Here we will have a test checks valid long mats.
  */
 TEST_CASE("GOOD input - long mats") {
-    CHECK(nospaces(mat(101, 101, '$', '*')) == nospaces(largeMat));
+    string rslt  = mat(101, 101, '$', '*');
+    CHECK((nospaces(rslt)  == nospaces(largeMat)  && rslt.find(largeMat) != string::npos));
 
-    CHECK(nospaces(mat(73, 31, '%', '^'))   == nospaces(largeMat2));
+    string rslt2 = mat(73, 31, '%', '^');
+    CHECK((nospaces(rslt2) == nospaces(largeMat2) && rslt2.find(largeMat2) != string::npos));
 
-    CHECK(nospaces(mat(73, 1, '%', '^'))    == nospaces(largeMat3));
+    string rslt3 = mat(73, 1, '%', '^');
+    CHECK((nospaces(rslt3) == nospaces(largeMat3) && rslt3.find(largeMat3) != string::npos));
 
-    CHECK(nospaces(mat(1, 73, '%', '^'))    == nospaces(largeMat4));
+    string rslt4 = mat(1, 73, '%', '^');
+    CHECK((nospaces(rslt4) == nospaces(largeMat4) && rslt4.find(largeMat4) != string::npos));
 }
 
 /**
